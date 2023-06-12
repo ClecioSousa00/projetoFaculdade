@@ -27,8 +27,8 @@ import Language from "@material-ui/icons/Language";
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
-import GerenciamentoProjetos from "views/Projetos/gerenciamentoProjetos.js";
-import GerenciamentoProfessores from "views/Professores/gerenciamentoProfessores.js";
+// import GerenciamentoProjetos from "views/Projetos/gerenciamentoProjetos.js";
+// import GerenciamentoProfessores from "views/Professores/gerenciamentoProfessores.js";
 import GerenciamentoAlunos from "views/Alunos/gerenciamentoAlunos.js";
 import TableList from "views/TableList/TableList.js";
 import Typography from "views/Typography/Typography.js";
@@ -56,24 +56,24 @@ const dashboardRoutes = [
     rtlName: "Alunos",
     icon: Person,
     component: GerenciamentoAlunos,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/Professores",
     name: "Gerenciamento de Professores",
     rtlName: "Professores",
     icon: Person,
-    component: GerenciamentoProfessores,
-    layout: "/admin"
+    // component: GerenciamentoProfessores,
+    layout: "/admin",
   },
   {
     path: "/projetos",
     name: "Gerenciamento de Projetos",
     rtlName: "Projetos",
     icon: LibraryBooks,
-    component: GerenciamentoProjetos,
-    layout: "/admin"
-  }
+    // component: GerenciamentoProjetos,
+    layout: "/admin",
+  },
   /*
   {
     path: "/table",
@@ -82,15 +82,14 @@ const dashboardRoutes = [
     icon: "content_paste",
     component: TableList,
     layout: "/admin"
-  }*/,
-  {
+  }*/ {
     path: "/upgrade-to-pro",
     name: "Upgrade To PRO",
     rtlName: "التطور للاحترافية",
     icon: Unarchive,
     component: UpgradeToPro,
-    layout: "/admin"
-  }
+    layout: "/admin",
+  },
 ];
 
 export default dashboardRoutes;
