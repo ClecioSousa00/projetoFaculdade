@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import MaterialTable from "material-table";
 
-const GerenciamentoAlunos = (props) => {
+const GerenciamentoProfessores = (props) => {
   const { useState, useEffect } = React;
 
   const [data, setData] = useState([]);
@@ -13,28 +13,26 @@ const GerenciamentoAlunos = (props) => {
 
   function handleClick() {
     axios
-      .get("https://demo6213899.mockable.io/alunos")
+      .get("https://demo6213899.mockable.io/professores")
       .then((response) => {
-        const alunos = response.data.lista.map((c) => {
+        const professores = response.data.lista.map((c) => {
           return {
             id: c.id,
-            cpf: c.cpf,
             matricula: c.matricula,
             nome: c.nome,
             idEndereco: c.idEndereco,
             curso: c.curso,
           };
         });
-        setData(alunos);
+        setData(professores);
       })
       .catch((error) => console.log(error));
   }
 
   function handleCreate(newData) {
     axios
-      .post("https://demo6213899.mockable.io/alunos", {
+      .post("https://demo6213899.mockable.io/professores", {
         id: newData.id,
-        cpf: newData.cpf,
         matricula: newData.matricula,
         nome: newData.nome,
         idEndereco: newData.idEndereco,
@@ -47,9 +45,8 @@ const GerenciamentoAlunos = (props) => {
 
   function handleUpdate(newData) {
     axios
-      .put("https://demo6213899.mockable.io/alunos", {
+      .put("https://demo6213899.mockable.io/professores", {
         id: newData.id,
-        cpf: newData.cpf,
         matricula: newData.matricula,
         nome: newData.nome,
         idEndereco: newData.idEndereco,
@@ -62,7 +59,7 @@ const GerenciamentoAlunos = (props) => {
 
   function handleDelete(newData) {
     axios
-      .delete("https://demo6213899.mockable.io/alunos", {
+      .delete("https://demo6213899.mockable.io/professores", {
         id: newData.id,
       })
       .then(function (response) {
@@ -72,10 +69,9 @@ const GerenciamentoAlunos = (props) => {
 
   return [
     <MaterialTable
-      title="Gerenciamento de Alunos"
+      title="Gerenciamento de Professores"
       columns={[
         { title: "Id", field: "id" },
-        { title: "cpf", field: "cpf" },
         { title: "matricula", field: "matricula", type: "numerico" },
         { title: "nome", field: "nome" },
         { title: "endereco", field: "idEndereco" },
@@ -123,4 +119,4 @@ const GerenciamentoAlunos = (props) => {
   ];
 };
 
-export default GerenciamentoAlunos;
+export default GerenciamentoProfessores;

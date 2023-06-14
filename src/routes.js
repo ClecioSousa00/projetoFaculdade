@@ -27,8 +27,8 @@ import Language from "@material-ui/icons/Language";
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
-// import GerenciamentoProjetos from "views/Projetos/gerenciamentoProjetos.js";
-// import GerenciamentoProfessores from "views/Professores/gerenciamentoProfessores.js";
+import GerenciamentoProjetos from "views/Projetos/GerenciamentoProjetos.js";
+import GerenciamentoProfessores from "views/Professores/GerenciamentoProfessores.js";
 import GerenciamentoAlunos from "views/Alunos/gerenciamentoAlunos.js";
 import TableList from "views/TableList/TableList.js";
 import Typography from "views/Typography/Typography.js";
@@ -63,7 +63,7 @@ const dashboardRoutes = [
     name: "Gerenciamento de Professores",
     rtlName: "Professores",
     icon: Person,
-    // component: GerenciamentoProfessores,
+    component: GerenciamentoProfessores,
     layout: "/admin",
   },
   {
@@ -71,7 +71,7 @@ const dashboardRoutes = [
     name: "Gerenciamento de Projetos",
     rtlName: "Projetos",
     icon: LibraryBooks,
-    // component: GerenciamentoProjetos,
+    component: GerenciamentoProjetos,
     layout: "/admin",
   },
   /*
