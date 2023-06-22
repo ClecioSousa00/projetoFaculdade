@@ -72,7 +72,7 @@ const GerenciamentoProfessores = (props) => {
       title="Gerenciamento de Professores"
       columns={[
         { title: "Id", field: "id" },
-        { title: "matricula", field: "matricula", type: "numerico" },
+        { title: "matricula", field: "matricula", },
         { title: "nome", field: "nome" },
         { title: "endereco", field: "idEndereco" },
         { title: "curso", field: "curso" },
