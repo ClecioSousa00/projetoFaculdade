@@ -13,7 +13,7 @@ const GerenciamentoProfessores = (props) => {
 
   function handleClick() {
     axios
-      .get("https://demo6213899.mockable.io/professores")
+      .get("http://localhost:8080/api/professor")
       .then((response) => {
         const professores = response.data.lista.map((c) => {
           return {
@@ -31,7 +31,7 @@ const GerenciamentoProfessores = (props) => {
 
   function handleCreate(newData) {
     axios
-      .post("https://demo6213899.mockable.io/professores", {
+      .post("http://localhost:8080/api/professor", {
         id: newData.id,
         matricula: newData.matricula,
         nome: newData.nome,
@@ -45,7 +45,7 @@ const GerenciamentoProfessores = (props) => {
 
   function handleUpdate(newData) {
     axios
-      .put("https://demo6213899.mockable.io/professores", {
+      .put(`http://localhost:8080/api/professor/update/${newData.id}`, {
         id: newData.id,
         matricula: newData.matricula,
         nome: newData.nome,
@@ -59,7 +59,7 @@ const GerenciamentoProfessores = (props) => {
 
   function handleDelete(newData) {
     axios
-      .delete("https://demo6213899.mockable.io/professores", {
+      .delete(`http://localhost:8080/api/professor/delete/${newData.id}`, {
         id: newData.id,
       })
       .then(function (response) {
@@ -94,6 +94,7 @@ const GerenciamentoProfessores = (props) => {
         onRowUpdate: (newData, oldData) =>
           new Promise((resolve, reject) => {
             setTimeout(() => {
+              handleUpdate(newData);
               const dataUpdate = [...data];
               const index = oldData.tableData.id;
               dataUpdate[index] = newData;

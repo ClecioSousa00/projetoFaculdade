@@ -13,9 +13,9 @@ const GerenciamentoAlunos = (props) => {
 
   function handleClick() {
     axios
-      .get("https://demo6213899.mockable.io/alunos")
+      .get("http://localhost:8080/api/aluno")
       .then((response) => {
-        const alunos = response.data.lista.map((c) => {
+        const alunos = response.data.map((c) => {
           return {
             id: c.id,
             cpf: c.cpf,
@@ -27,12 +27,13 @@ const GerenciamentoAlunos = (props) => {
         });
         setData(alunos);
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>console.log(error));
+    
   }
 
   function handleCreate(newData) {
     axios
-      .post("https://demo6213899.mockable.io/alunos", {
+      .post("http://localhost:8080/api/aluno", {
         id: newData.id,
         cpf: newData.cpf,
         matricula: newData.matricula,
@@ -47,7 +48,7 @@ const GerenciamentoAlunos = (props) => {
 
   function handleUpdate(newData) {
     axios
-      .put("https://demo6213899.mockable.io/alunos", {
+      .put(`http://localhost:8080/api/aluno/update/${newData.id}`, {
         id: newData.id,
         cpf: newData.cpf,
         matricula: newData.matricula,
@@ -62,7 +63,7 @@ const GerenciamentoAlunos = (props) => {
 
   function handleDelete(newData) {
     axios
-      .delete("https://demo6213899.mockable.io/alunos", {
+      .delete(`http://localhost:8080/api/aluno/delete/${newData.id}`, {
         id: newData.id,
       })
       .then(function (response) {
@@ -76,7 +77,7 @@ const GerenciamentoAlunos = (props) => {
       columns={[
         { title: "Id", field: "id" },
         { title: "cpf", field: "cpf" },
-        { title: "matricula", field: "matricula", type: "numerico" },
+        { title: "matricula", field: "matricula", },
         { title: "nome", field: "nome" },
         { title: "endereco", field: "idEndereco" },
         { title: "curso", field: "curso" },
@@ -98,11 +99,11 @@ const GerenciamentoAlunos = (props) => {
         onRowUpdate: (newData, oldData) =>
           new Promise((resolve, reject) => {
             setTimeout(() => {
+              handleUpdate(newData);
               const dataUpdate = [...data];
               const index = oldData.tableData.id;
               dataUpdate[index] = newData;
               setData([...dataUpdate]);
-
               resolve();
             }, 1000);
           }),

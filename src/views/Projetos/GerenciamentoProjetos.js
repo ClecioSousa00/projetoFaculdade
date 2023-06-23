@@ -13,7 +13,7 @@ const GerenciamentoProjetos = (props) => {
 
   function handleClick() {
     axios
-      .get("https://demo6213899.mockable.io/projetos")
+      .get("http://localhost:8080/api/projeto")
       .then((response) => {
         const projetos = response.data.lista.map((c) => {
           return {
@@ -37,7 +37,7 @@ const GerenciamentoProjetos = (props) => {
 
   function handleCreate(newData) {
     axios
-      .post("https://demo6213899.mockable.io/projetos", {
+      .post("http://localhost:8080/api/projeto", {
         id: newData.id,
         tituloProjeto: newData.tituloProjeto,
         areaProjeto: newData.areaProjeto,
@@ -56,7 +56,7 @@ const GerenciamentoProjetos = (props) => {
 
   function handleUpdate(newData) {
     axios
-      .put("https://demo6213899.mockable.io/projetos", {
+      .put(`http://localhost:8080/api/projeto/update/${newData.id}`, {
         id: newData.id,
         c: newData.tituloProjeto,
         areaProjeto: newData.areaProjeto,
@@ -75,7 +75,7 @@ const GerenciamentoProjetos = (props) => {
 
   function handleDelete(newData) {
     axios
-      .delete("https://demo6213899.mockable.io/projetos", {
+      .delete(`http://localhost:8080/api/projeto/delete/${newData.id}`, {
         id: newData.id,
       })
       .then(function (response) {
@@ -115,6 +115,7 @@ const GerenciamentoProjetos = (props) => {
         onRowUpdate: (newData, oldData) =>
           new Promise((resolve, reject) => {
             setTimeout(() => {
+              handleUpdate(newData);
               const dataUpdate = [...data];
               const index = oldData.tableData.id;
               dataUpdate[index] = newData;
