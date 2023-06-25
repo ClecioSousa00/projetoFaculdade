@@ -15,7 +15,7 @@ const GerenciamentoProfessores = (props) => {
     axios
       .get("http://localhost:8080/api/professor")
       .then((response) => {
-        const professores = response.data.lista.map((c) => {
+        const professores = response.data.map((c) => {
           return {
             id: c.id,
             matricula: c.matricula,

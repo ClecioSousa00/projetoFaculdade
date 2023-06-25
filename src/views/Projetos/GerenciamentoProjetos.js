@@ -15,7 +15,7 @@ const GerenciamentoProjetos = (props) => {
     axios
       .get("http://localhost:8080/api/projeto")
       .then((response) => {
-        const projetos = response.data.lista.map((c) => {
+        const projetos = response.data.map((c) => {
           return {
             id: c.id,
             tituloProjeto: c.tituloProjeto,
@@ -58,7 +58,7 @@ const GerenciamentoProjetos = (props) => {
     axios
       .put(`http://localhost:8080/api/projeto/update/${newData.id}`, {
         id: newData.id,
-        c: newData.tituloProjeto,
+        tituloProjeto: newData.tituloProjeto,
         areaProjeto: newData.areaProjeto,
         resumo: newData.resumo,
         palavraChave1: newData.palavraChave1,
@@ -120,7 +120,6 @@ const GerenciamentoProjetos = (props) => {
               const index = oldData.tableData.id;
               dataUpdate[index] = newData;
               setData([...dataUpdate]);
-
               resolve();
             }, 1000);
           }),
