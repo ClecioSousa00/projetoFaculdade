@@ -30,6 +30,7 @@ import UserProfile from "views/UserProfile/UserProfile.js";
 import GerenciamentoProjetos from "views/Projetos/GerenciamentoProjetos.js";
 import GerenciamentoProfessores from "views/Professores/GerenciamentoProfessores.js";
 import GerenciamentoAlunos from "views/Alunos/gerenciamentoAlunos.js";
+import Endereco from "views/Enderecos/endereco.js";
 import TableList from "views/TableList/TableList.js";
 import Typography from "views/Typography/Typography.js";
 import Icons from "views/Icons/Icons.js";
@@ -72,6 +73,14 @@ const dashboardRoutes = [
     rtlName: "Projetos",
     icon: LibraryBooks,
     component: GerenciamentoProjetos,
+    layout: "/admin",
+  },
+  {
+    path: "/endereco",
+    name: "Endereços",
+    rtlName: "Enderecos",
+    icon: LibraryBooks,
+    component: Endereco,
     layout: "/admin",
   },
   /*
