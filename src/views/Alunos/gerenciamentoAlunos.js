@@ -41,13 +41,15 @@ const GerenciamentoAlunos = (props) => {
         curso: newData.curso,
       })
       .then(function (response) {
+        setData(...data, newData);
         console.log("Salvo com sucesso.");
       });
   }
 
   function handleUpdate(newData) {
+    console.log(newData);
     axios
-      .put("https://demo6213899.mockable.io/alunos", {
+      .put(`https://demo6213899.mockable.io/alunos${newData.id}`, {
         id: newData.id,
         cpf: newData.cpf,
         matricula: newData.matricula,
@@ -62,7 +64,7 @@ const GerenciamentoAlunos = (props) => {
 
   function handleDelete(newData) {
     axios
-      .delete("https://demo6213899.mockable.io/alunos", {
+      .delete(`https://demo6213899.mockable.io/alunos${newData.id}`, {
         id: newData.id,
       })
       .then(function (response) {
